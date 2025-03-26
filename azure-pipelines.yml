@@ -8,7 +8,11 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: '#biryani'
+    publishLocation: 'pipeline'
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
