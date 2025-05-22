@@ -18,7 +18,12 @@ steps:
   displayName: 'Build Docker Image'
   inputs:
     containerRegistry: '<your-service-connection-name>'
-    repository: 'myapp'
+- task: DockerCompose@1
+  inputs:
+    containerregistrytype: 'Azure Container Registry'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Run a Docker Compose command'
+    repository: 'CI-CD'
     command: 'build'
     Dockerfile: 'Dockerfile'         # <- Adjust this if it's in a subfolder
     tags: |
